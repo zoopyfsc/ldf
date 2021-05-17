@@ -1,0 +1,65 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+	<view class="group">
+
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">定点位置</text>
+					<view class="input-item-content">
+						<picker bindchange="bindPickerChange" value="{{id}}" range="{{array}}">
+							<view class="picker">
+									{{array[index]}}
+							</view>
+						</picker>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">当前位置</text>
+					<view class="input-item-content">
+							{{address}}
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">时间</text>
+						{{date}}
+				</view>
+				<view class="input-item input-item-full">
+					<textarea placeholder="请输入备注信息（不超过300字）" maxlength="50"></textarea>
+				</view>
+
+
+		</view>
+	</view>
+
+	<view class="btn-submit">
+		<button class="btn-block btn-orange" bindtap="reserveSubmit" disabled="{{submited}}">我要签到/签退</button>
+	</view>
+	</view>
+
+		<view class="recoder">{{date1}}签到记录</view>
+<view class="table">
+  <view class="tr bg-w">
+	<view class="th width1">类型</view>
+    <view class="th width2">地址</view>
+    <view class="th width3">时间</view>
+  </view>
+  <block wx:for="{{listData}}" wx:key="{{code}}">
+    <view class="tr bg-g">
+      <view class="td width1"> {{item.code}}</view>
+      <view class="td width2"> {{item.text}}</view>
+      <view class="td width3">{{item.type}}</view>
+    </view>
+  </block>
+</view>
+
+
+
+</view>
+	<loading hidden="{{aptoticAddTimeHidden}}">loading</loading>
+
+
+</view>

@@ -1,0 +1,82 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+	<view class="group">
+<!--基本信息-->
+		<view class="group-body">
+			<view class="input-list">
+
+			<view class="input-item">
+					<text class="input-item-label">时间</text>
+				{{date}}
+				</view>
+
+        				<view class="input-item">
+					<text class="input-item-label">当前地址</text>
+					<view class="input-item-content">
+					{{address}}
+					</view>
+				</view>
+
+				<view class="input-item">
+					<text class="input-item-label">网点名称</text>
+						<view class="picker"  bindtap="selectWebSite">
+								{{website}}
+						</view>
+				</view>
+
+	
+				<view class="input-item input-item-full">
+        		<text class="input-item-label">外勤原因</text>
+						<textarea bindinput="bindReasonChange" placeholder="请输入备注信息（不超过300字）" maxlength="50"></textarea>
+				</view>
+
+
+		</view>
+
+  <!--上传附件-->  
+  	
+  <view class="upload_photo_title" >上传附件</view>
+	  <view class="upload_photo" >
+     	<view wx:for="{{imagesUrl}}" wx:key="{{item.path}}"> 
+        <image class="upload_photo_thumb" src="{{item.path}}"></image>
+      </view>
+      <view > <image class="upload_photo_add"  bindtap="bindChooseImage" src="../../images/add.png"></image></view>
+    </view>
+		
+    <view style="clear:both; "></view>
+
+
+
+	</view>
+	<view class="btn-submit">
+		<button class="btn-block btn-orange" bindtap="reserveSubmit">外勤签到</button>
+	</view>
+
+	</view>
+
+		<view class="recoder">{{date1}}签到记录</view>
+<view class="table">
+  <view class="tr bg-w">
+	<view class="th width1">类型</view>
+    <view class="th width2">签到地址</view>
+    <view class="th width3">签到时间</view>
+  </view>
+  <block wx:for="{{listData}}" wx:key="{{code}}">
+    <view class="tr bg-g">
+			<view class="td width1">{{item.code}}</view>
+      <view class="td width2"> {{item.text}}</view>
+      <view class="td width3">{{item.type}}</view>
+    </view>
+  </block>
+</view>
+
+
+
+</view>
+
+	<loading hidden="{{loaddingHidden}}">loading</loading>
+
+</view>

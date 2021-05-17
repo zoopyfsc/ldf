@@ -1,0 +1,52 @@
+<!--logs.wxml-->
+<view class="container">
+  <view class="container-body page-content">
+      <view>
+        <!--下拉菜单-->
+        <view class="filter-flex">
+          <view class="filter-tab">
+            <text bindtap="setFilterPanel" data-findex="0" class="{{showfilterindex==0?'active':''}}">类型</text>
+            <text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">网点</text>
+            <text bindtap="setFilterPanel" data-findex="2" class="{{showfilterindex==2?'active':''}}">销售额</text>
+            <text bindtap="setFilterPanel" data-findex="3" class="{{showfilterindex==3?'active':''}}">距离</text>
+          </view>
+          <view class="filter-content" wx:if="{{showfilter}}">
+            <view class="filter-panel filter-sort" wx:if="{{showfilterindex==0}}">
+              <view wx:for="{{filterdata.type}}" wx:key="{{item.id}}" bindtap="setType" data-typeindex="{{index}}" data-typeid="{{item.id}}" class="{{typeindex==index?'active':''}}">{{item.title}}</view>
+            </view>
+            <view class="filter-panel filter-sort" wx:if="{{showfilterindex==1}}">
+              <view wx:for="{{filterdata.sort}}" wx:key="{{item.id}}" bindtap="setSort" data-sortindex="{{index}}" data-sortid="{{item.id}}" class="{{sortindex==index?'active':''}}">{{item.title}}</view>
+            </view>
+            <view class="filter-panel filter-sort" wx:if="{{showfilterindex==2}}">
+              <view wx:for="{{filterdata.sale}}" wx:key="{{item.id}}" bindtap="setSale" data-saleindex="{{index}}" data-saleid="{{item.id}}" class="{{saleindex==index?'active':''}}">{{item.title}}</view>
+            </view>
+            <view class="filter-panel filter-sort" wx:if="{{showfilterindex==3}}">
+              <view wx:for="{{filterdata.len}}" wx:key="{{item.id}}" bindtap="setLen" data-lenindex="{{index}}" data-lenid="{{item.id}}" class="{{lenindex==index?'active':''}}">{{item.title}}</view>
+            </view>
+          </view>
+          <view class="filter-shadow" wx:if="{{showfilter}}" bindtap="hideFilter"></view>
+        </view>
+        <!--地图-->
+        <view class="mainView">
+          <map hidden="{{mapHidden}}" id="map" scale="11" show-location style="width: 100%; height:200px;" latitude="{{place.latitude}}" longitude="{{place.longitude}}" markers="{{markers}}"></map>
+        </view>
+        <!--网点列表-->
+        <view>{{info}}</view>
+        <view class="wangdian" wx:for="{{list}}" wx:key="{{item.WebSiteID}}">
+          <view><span wx:if="{{item.type==1}}">网点名称<i>|</i></span>
+            <span wx:elif="{{item.type==2}}">对手网点<i>|</i></span> {{item.websiteName}}
+          </view>
+          <view><span>市场名称<i>|</i></span> {{item.marketName}}</view>
+          <view><span>联系地址<i>|</i></span> {{item.place}}</view>
+          <button class="btn-orange" style="width:40%;float:left; margin-left:5%; margin-top:5px;" bindtap="gotoHere_" data-latitude="{{item.GPS_X_Tencent}}" data-longitude="{{item.GPS_Y_Tencent}}">到这里</button>
+          <button wx:if="{{item.type==1}}" class="btn-orange" style="width:40%;margin-top:5px; " 
+            bindtap="outlestDetail" data-WebSiteID="{{item.WebSiteID}}"
+              disabled="{{submited}}">巡查</button>
+          <button wx:if="{{item.type==2}}" class="btn-orange" style="width:40%;margin-top:5px; " 
+            bindtap="competitorDetail" data-WebSiteID="{{item.WebSiteID}}"
+              disabled="{{submited}}">查看详情</button>
+        </view>
+      </view>
+  </view>
+	<loading hidden="{{loaddingHidden}}">loading</loading>
+</view>

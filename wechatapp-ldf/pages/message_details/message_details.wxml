@@ -1,0 +1,21 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+
+
+<view class="message_title"><small>[销售公告]</small> 国庆节促销活动</view>
+
+<view class="message_content">广东绿岛风室内空气系统科技有限公司座落于著名侨乡广东省台山市台城南兴路15号，自1989年成立以来企业的综合实力不断提高，并很快发展成为集研究、开发、销售为一体的现代化企业。如今, 它的销售网点已经遍布全国各地, 而它生产的“绿岛风”牌产品也从国内走向了国外，远销到美国、日本、韩国、沙特阿拉伯等八十个国家和地区。 </view>
+
+
+<view class="message_time">发布时间:2017-06-10 13:50 | 发布部门:销售中心</view>
+<view class="message_author"></view>
+
+
+	</view>
+
+
+
+</view>

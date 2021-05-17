@@ -1,0 +1,17 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+      <view class="wangdian" wx:for="{{records}}" wx:key="{{item.ID}}">
+        <view bindtap="viewDetailInfo" data-recordid="{{item.ID}}">
+            <span>巡查日期<i>|</i></span> {{item.SignInDatetime}} [{{item.SignOutStatus_Show}}] 
+           <div><span>巡查人<i>|</i></span>{{item.Createby}}</div></view>
+        <view data-recordid="{{item.ID}}">
+          <span>网点名称<i>|</i></span> {{item.WebSiteName}}
+        <div><button class="btn-orange" bindtap="deleteRecord" 
+            data-recordId="{{item.ID}}">删 除</button></div></view>
+      </view>
+  </view>
+	<loading hidden="{{loaddingHidden}}">loading</loading>
+</view>

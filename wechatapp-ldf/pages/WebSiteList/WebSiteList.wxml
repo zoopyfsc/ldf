@@ -1,0 +1,38 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+   <!--三级联动地区选择器，客户的地区是有限的，如河南省只有郑州、洛阳两地，而不是全部。该部分代码参考：http://www.wxappclub.com/topic/416-->
+<import src="../../templates/address-temp"/>
+<template is="addressPicker" 
+    data="{{provinceIndex:provinceIndex,cityIndex:cityIndex,districtIndex:districtIndex,province:province,city:city,district:district}}"/>
+
+
+<view class="search-box">
+    <view> <input class="input" maxlength="20" placeholder="市场名称" 
+            bindinput="bindMarketChange"/></view>
+      <view><input class="input" maxlength="20" placeholder="网点名称"
+            bindinput="bindWebSiteChange"/></view>
+</view>
+
+	<view class="btn-submit mg-top10">
+		<button class="btn-block btn-orange " bindtap="applySubmit">搜索</button>
+	</view>
+
+ <view class="message_title" style="border-bottom:0px;"><small>共查询到网点：</small>{{list.length}}</view>
+
+      <!--网点列表-->
+      <view class="wangdian" wx:for="{{list}}" wx:key="{{item.WebSiteName}}"
+	  		bindtap="bindWebSiteLbs" data-websiteid="{{item.WebSiteID}}">
+        <view><span>网点名称<i>|</i></span> {{item.WebSiteName}}</view>
+        <view><span>市场名称<i>|</i></span> {{item.MarketName}}</view>
+        <view><span>联系地址<i>|</i></span> {{item.Address}}</view>
+      </view>
+
+
+	</view>
+
+
+
+</view>

@@ -1,0 +1,62 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+         <!--网点详情-->
+      <view class="wangdian">
+          <view><span>巡查日期<i>|</i></span> {{webSite.Createon}}</view>
+        <view><span>网点名称<i>|</i></span> {{webSite.WebSiteName}}</view>
+            <view><span style="margin-left:14px">巡查人<i>|</i></span> {{webSite.Createby}}</view>
+            <view><span>签到日期<i>|</i></span> {{webSite.SignInDatetime}}</view>
+                <view><span>签退日期<i>|</i></span> {{webSite.SignOutDatetime}}</view>
+
+      </view>
+     
+<!--巡查附件中展示-->
+
+ <view class="wangdian-media">
+
+
+<view class="swiper-tab-record">
+    <view class="swiper-tab-list-record {{currentTab==0 ? 'on-record' : ''}}" data-current="0" bindtap="swichNav">巡查图片</view>
+    <view class="swiper-tab-list-record {{currentTab==1 ? 'on-record' : ''}}" data-current="1" bindtap="swichNav">巡查视频</view>
+</view>
+
+<view class="weui-cells__title"  style="background-color:#fff; margin-top:10px;" hidden="{{!isShow}}">
+
+           <!--巡查图片-->
+
+	<view class="upload_photo" wx:for="{{detail.ImgStrList}}" wx:key="{{item.FileName}}">
+     <view > <image class="upload_photo_thumb" src="{{item.FilePath}}"></image></view>
+    </view>
+		
+    <view style="clear:both; "></view>
+
+</view>
+
+      <!--巡查视频-->
+<view class="weui-cells__title" style="background-color:#fff; margin-top:10px;" hidden="{{isShow}}">
+
+	  <view class="upload_photo" wx:for="{{detail.VideoStrList}}" wx:key="{{item.FileName}}">
+     <view > 
+     <video class="upload_video_thumb " src="{{item.FilePath}}"></video>  </view>
+     </view>
+	
+		
+        <view style="clear:both; "></view> 
+  </view>
+
+
+
+
+</view>
+
+
+
+</view>
+
+
+
+
+</view>

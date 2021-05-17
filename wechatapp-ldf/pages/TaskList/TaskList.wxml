@@ -1,0 +1,28 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+   <view class="top-tab">
+     <view class="top-tab-content">
+      <view bindtap="task_add" >添加任务</view>
+      <view bindtap="task_lists" class="top-tab-currect">任务列表</view>
+    </view>
+   </view>
+
+<view bindtap="details" class="task-list"  wx:for="{{list}}" 
+  wx:key="{{item.TaskID}}" data-name="{{item.TaskID}}">
+	<view class="task-list-title">
+	[{{item.TaskID}}]<b>{{item.TaskTitle}}</b> <span class="task-list-title-doing">
+      <icon type="success" size="15" wx:if="{{item.ExecutorStatus==1}}"/>
+      <icon type="warn"    size="15" wx:else/>
+      </span>
+	</view>
+  <view class="task-list-brife">
+    <view class="task-list-brife-left">{{item.TaskExecutorDate}}<small>执行日期</small></view>
+    <view class="task-list-brife-center">{{item.WebSiteName}}<small>巡查网点</small></view>
+    <view class="task-list-brife-right">{{item.TaskExecutorAccoutName}}<small>指派人员</small></view>
+  </view>
+</view>
+	</view>
+</view>

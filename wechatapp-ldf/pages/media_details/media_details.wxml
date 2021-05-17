@@ -1,0 +1,20 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+
+     <view class="media_warpper" > <image class="media_warpper" src="../../images/pic1.jpg"></image></view>
+
+
+
+       <!--按钮底部固定-->
+	<view class="btn-bottom-fixed btn-submit" style="background-color：#fff;opacity:0.8;" >
+		<button class="btn-block btn-orange"  bindtap="applySubmit">删除</button>
+	</view>
+
+	</view>
+
+
+
+</view>

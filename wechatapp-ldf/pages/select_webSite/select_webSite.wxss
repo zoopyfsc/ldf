@@ -1,0 +1,9 @@
+/* pages/outlets_ours/outlets_ours.wxss */
+.message_title {
+    font-size:16px!important;
+}
+
+.wangdian_selected{
+ border:1px #ddd solid;
+ background-color: #eee;
+}

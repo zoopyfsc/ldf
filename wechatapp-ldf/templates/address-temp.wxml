@@ -1,0 +1,27 @@
+<template name="addressPicker">
+    <view class="select_area">
+        <view class="select_area_item">
+            <picker bindchange="bindProvinceChange" value="{{provinceIndex}}" range="{{province}}">
+                <view class="select_area_item_li">
+                {{province[provinceIndex]}}
+                </view>
+            </picker>
+        </view>
+        <view class="select_area_item">
+            <picker bindchange="bindCityChange" value="{{cityIndex}}" range="{{city}}">
+                <view class="select_area_item_li">
+                {{city[cityIndex]}}
+                </view>
+            </picker>
+        </view>
+        <view class="select_area_item">
+            <picker bindchange="bindDistrictChange" value="{{districtIndex}}" range="{{district}}">
+                <view class="select_area_item_li">
+                {{district[districtIndex]}}
+                </view>
+            </picker>
+        </view>
+    </view>
+</template>
+
+

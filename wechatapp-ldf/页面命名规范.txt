@@ -1,0 +1,30 @@
+登录 login
+首页 index
+定点签到 AptoticAddTimeRecord
+外勤签到 OutAddTimeRecord
+考勤定点 CheckPlace_Position	
+公司网点维护 outlets_ours （这个页面没做，与outlets_checks一样都是搜索并展示列表的，点击列表进入网点提交页“outlets_summit”）
+竞争对手网点维护 outlets_competitor （同上）
+网点提交页 outlets_summit
+周边网点 outlets_nearby 
+网点巡查-待巡查网点 outlets_checks （“网点巡查”进入）
+网点巡查-具体网点 outlest_details （“巡查网点”进入）
+网点巡查-巡查记录 checks_record ("具体网点”进入）
+网点巡查-任务详情 checks_record_details （"巡查记录"进入）
+巡查任务添加 task_add
+巡查任务列表 task_lists
+巡查任务详情 task_details
+图片、视频详情 media_details ("外勤签到”、“巡查任务详情”的附件点击放大浏览）
+消息提醒 message
+消息详情 message_details
+待处理工作 todo
+待处理工作详情（同消息详情页message_details） 
+
+
+1234567890
+上传图片（带图片选择器） pages/question/question
+
+
+
+
+appid:wx863a3741b4480255

@@ -1,0 +1,68 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+   <view class="top-tab">
+     <view class="top-tab-content">
+      <view bindtap="task_add"  class="top-tab-currect">添加任务</view>
+      <view bindtap="task_lists" >任务列表</view>
+    </view> 
+   </view>
+
+	<view class="group">
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">巡查网点</text>
+					<view class="input-item-content">
+						<view bindtap="selectWebSite">
+							{{websitenum}}
+						</view>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">执行日期</text>
+					<picker mode="date" value="{{date}}" start="2017-01-01" end="2030-12-31" bindchange="bindDateChange">
+						<view class="picker">
+						{{date}}
+						</view>
+					</picker>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">销售人员</text>
+						<picker bindchange="bindPickerChange" value="{{index}}" range="{{list1}}">
+							<view class="picker">
+							{{list1[index]}}
+							</view>
+						</picker>
+				</view>
+        			<view class="input-item">
+					<text class="input-item-label">任务标题</text>
+					<view class="input-item-content">
+						<input type="text" placeholder="请输入任务标题，不超过20个字"
+						   bindinput="bindTitleChnage"></input>
+					</view>
+				</view>
+				<view class="input-item input-item-full">
+					<textarea placeholder="请输入备注信息（不超过300字）" maxlength="50"
+					  bindinput="bindMsgChange"></textarea>
+				</view>
+
+
+		</view>
+	</view>
+
+	<view class="btn-submit">
+		<button class="btn-block btn-orange" bindtap="reserveSubmit" disabled="{{submited}}">添加</button>
+	</view>
+  </view>
+
+
+
+	</view>
+
+
+	<loading hidden="{{loaddingHidden}}">loading</loading>
+
+</view>

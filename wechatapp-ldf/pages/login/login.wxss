@@ -1,0 +1,34 @@
+
+.page-content{
+	background: #f9f9f9;
+}
+/**index.wxss**/
+.userinfo {
+    margin-top:30px;
+        margin-bottom:20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+
+.group{ border-radius: 10px; background: #fff; width:92%; margin:8px auto; padding:5px;  border: 1px #eee solid;}
+.usermotto {
+  margin: 0 auto;
+  text-align: center;
+  color: #aaa;
+
+}
+button{ width:89%;}
+

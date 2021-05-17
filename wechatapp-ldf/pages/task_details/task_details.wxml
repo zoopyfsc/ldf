@@ -1,0 +1,36 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+  <view class="mainView">
+            <map id="map"  
+			show-location style="width:100%; height:300px; " 
+			longitude="{{longitude}}" latitude="{{latitude}}"
+			polyline="{{polyline}}" markers="{{markers}}"></map>
+           </view> 
+
+	<view class="task-list-title" wx:for="{{tasks}}" wx:key="{{item.WebSiteName}}">
+	<view wx:if="{{item.ExecutorStatus==1}}">
+		<b>{{item.WebSiteName}}</b> 
+		<span class="task-list-title-done">
+		<icon type="success" size="15"/></span>
+	</view>
+	<view wx:else>
+		<b>{{item.WebSiteName}}</b> 
+		<span class="task-list-title-done">
+		<icon type="warn" size="15"/>
+		</span>
+	</view>
+	</view>
+	
+   	<view class="btn-submit">
+		<button class="btn-block btn-orange" bindtap="deleteTask" data-task="{{taskId}}">删除巡查任务</button>
+	</view>
+
+
+	</view>
+
+
+
+</view>

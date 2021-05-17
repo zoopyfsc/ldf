@@ -1,0 +1,2 @@
+1：系统配置文件为app.json文件，主要配置一下项目：pages、window、tabBar、networkTimeout、debug，该文件为json数据，文件内不能添加注释行。
+  注意，这个pages次序比较蛋疼，不要乱调整，否则有些JS会没法引用而出错，详见：微信小程序--Do not have xxx handler in current page"  http://www.jianshu.com/p/aaa7c1b43ce4

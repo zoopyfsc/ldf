@@ -1,0 +1,29 @@
+<!--logs.wxml-->
+<view class="container">
+
+	<view class="container-body page-content">
+	 
+   
+
+<view class="search-box1">
+    <view> <input class="input" maxlength="20" bindinput="bindKeyChange" placeholder="输入关键字搜索考勤地点" /></view>
+</view>
+
+	<view class="btn-submit mg-top10">
+		<button class="btn-block btn-orange " bindtap="search">搜索</button>
+	</view>
+
+  <view class="message_title"><small>共查询到考勤地点：</small>{{list.length}}</view>
+
+	<view class="message_list" >
+		<view bindtap="bindPlace" wx:for="{{list}}" wx:key="{{item.ID}}" data-id="{{item.ID}}">
+			{{item.place}}
+			<image class="arrow-r" src="../../images/icon_right_large.png"></image>
+		</view>
+	</view>
+	</view>
+
+
+	<loading hidden="{{loaddingHidden}}">loading</loading>
+
+</view>

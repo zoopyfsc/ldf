@@ -1,0 +1,34 @@
+/* pages/checks_record_details/checks_record_details.wxss */
+.swiper-tab-record {
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  background-color:white;
+}
+
+.swiper-tab-list-record {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 50%;
+  color: #777;
+  border-bottom: 0rpx;
+}
+
+.on-record {
+  color: #159b77;
+  border-bottom: 2rpx solid #159b77;
+}
+
+.swiper-box-record {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box-record view {
+  text-align: center;
+}
+.weui-cells__title-record{background: #fff; }
+
+.wangdian-media{ border-radius: 10px; background: #fff; width:92%; margin:8px auto; padding:5px; text-align: center; border: 1px #eee solid;}

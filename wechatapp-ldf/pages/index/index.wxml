@@ -1,0 +1,41 @@
+<view class="container  page-content">
+
+<view class="container-gray ">
+
+  <view class="index-banner" >
+    <image src="../../images/logo.png" class="slide-image" mode="top aspectFit"/>
+  </view>
+
+<block wx:if="{{menu1_len>0}}">
+  <view class="index-block-title">考勤管理</view>
+	<view class="index-menu">
+		<navigator class="index-menu-item" wx:for="{{indexmenu1}}" wx:key="{{item.url}}" url="../{{item.url}}/{{item.url}}">
+			<image src="{{item.icon}}"></image>
+			<text>{{item.text}}</text>
+		</navigator>
+	</view>
+	</block>
+
+<block wx:if="{{menu2_len>0}}">
+	<view class="index-block-title" style="clear:both;">网点管理</view>
+	<view class="index-menu2">
+		<navigator class="index-menu-item" wx:for="{{indexmenu2}}" wx:key="{{item.url}}" url="../{{item.url}}/{{item.url}}">
+			<image src="{{item.icon}}"></image>
+			<text>{{item.text}}</text>
+		</navigator>
+	</view>
+	</block>
+
+<block wx:if="{{menu2_len>0}}">
+	<view class="index-block-title" style="clear:both;">门户消息</view>
+	<view class="index-menu">
+		<navigator class="index-menu-item" wx:for="{{indexmenu3}}" wx:key="{{item.url}}" url="../{{item.url}}/{{item.url}}">
+			<image src="{{item.icon}}"></image>
+			<text>{{item.text}}</text>
+		</navigator>
+	</view>
+	</block>
+
+  </view>
+
+</view>
