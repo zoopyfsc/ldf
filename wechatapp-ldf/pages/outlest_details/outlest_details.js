@@ -195,7 +195,7 @@ function signOut_(that){
       success:function(res){
         that.setData({loaddingHidden:!that.data.loaddingHidden}) 
         wx.showModal({content:res.data.ReturnMsg})
-        if(res.data.Result == '1'){
+        if(res.data.Result == '1'){ 
           wx.navigateTo({
             url:'../checks_record/checks_record?websiteid='+that.data.webSiteId
           })
