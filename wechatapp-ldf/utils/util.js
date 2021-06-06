@@ -73,36 +73,17 @@ Date.prototype.Format = function(fmt)
 } 
 
 function getLocation(that){
-  wx.getLocation({
-        success:function (res) {  
-          var latitude = res.latitude;
-          var longitude = res.longitude;
-          var key = 'GWWBZ-ZJSW4-RJCUJ-DAHA6-TLE7Z-HABCE';
-          wx.request({
-            url:'http://apis.map.qq.com/ws/geocoder/v1/',
-            data:{
-               location:latitude+","+longitude,
-               key:key
-            },
-            success:function(res) {
-              var place = res.data.result.address;
-              location = {
-                latitude:latitude,
-                longitude:longitude,
-                place:place
-              }
-              that.setData({place:location});
-            } 
-          })
-        }
-    });
+    locationCallback('',that)
 }
 
 function locationCallback(callback,that){
   wx.getLocation({
+        type:'gcj02',
         success:function (res) {  
           var latitude = res.latitude;
           var longitude = res.longitude;
+          that.setData({latitude:latitude})
+          that.setData({longitude:longitude})
           var key = 'GWWBZ-ZJSW4-RJCUJ-DAHA6-TLE7Z-HABCE';
           wx.request({
             url:'http://apis.map.qq.com/ws/geocoder/v1/',
@@ -111,14 +92,17 @@ function locationCallback(callback,that){
                key:key
             },
             success:function(res) {
-              var place = res.data.result.address;
+              console.log(res)
+              var place = res.data.result.formatted_addresses.recommend;
               location = {
                 latitude:latitude,
                 longitude:longitude,
                 place:place
               }
               that.setData({place:location});
-              callback(that);
+              that.setData({address:place+'('+latitude+","+longitude+')'});
+              if(callback)
+                callback(that);
             } 
           })
         }

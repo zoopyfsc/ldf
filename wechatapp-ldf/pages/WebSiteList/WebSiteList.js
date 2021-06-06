@@ -8,7 +8,11 @@ Page({
       district: ['-四级地区-'],
       provinceIndex: 0,
       cityIndex: 0,
-      districtIndex: 0
+      districtIndex: 0,
+      IsNeedPage: 1,
+      PageSize: 10,
+      CurrentPageNum: 1,
+      list:[]
   },
   onLoad: function () {
     var that = this;
@@ -33,6 +37,10 @@ Page({
       wx.navigateTo({
         url:'../outlets_summit/outlets_summit?websiteid='+websiteid
       })
+  },
+  loadMore:function(){
+    this.setData({CurrentPageNum:this.data.CurrentPageNum+1});
+    getWebSite(this);
   }
 });
 
@@ -55,8 +63,9 @@ function getWebSite(that){
     if(that.data.webSite){
         url = url + "&WebSiteName="+that.data.webSite;
     }
-    console.log(url)
-
+   
+    //分页参数
+    url = url + "&IsNeedPage=1&PageSize=10&CurrentPageNum="+that.data.CurrentPageNum;
     wx.request({
       url: url,
       data:{
@@ -73,7 +82,7 @@ function getWebSite(that){
               WebSiteID:obj.WebSiteID
             }
           });
-          that.setData({list:list})
+        that.setData({ list: that.data.list.concat(list) });
       }
     });
 }

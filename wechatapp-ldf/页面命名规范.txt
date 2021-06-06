@@ -1,30 +1,33 @@
-µÇÂ¼ login
-Ê×Ò³ index
-¶¨µãÇ©µ½ AptoticAddTimeRecord
-ÍâÇÚÇ©µ½ OutAddTimeRecord
-¿¼ÇÚ¶¨µã CheckPlace_Position	
-¹«Ë¾ÍøµãÎ¬»¤ outlets_ours £¨Õâ¸öÒ³ÃæÃ»×ö£¬Óëoutlets_checksÒ»Ñù¶¼ÊÇËÑË÷²¢Õ¹Ê¾ÁĞ±íµÄ£¬µã»÷ÁĞ±í½øÈëÍøµãÌá½»Ò³¡°outlets_summit¡±£©
-¾ºÕù¶ÔÊÖÍøµãÎ¬»¤ outlets_competitor £¨Í¬ÉÏ£©
-ÍøµãÌá½»Ò³ outlets_summit
-ÖÜ±ßÍøµã outlets_nearby 
-ÍøµãÑ²²é-´ıÑ²²éÍøµã outlets_checks £¨¡°ÍøµãÑ²²é¡±½øÈë£©
-ÍøµãÑ²²é-¾ßÌåÍøµã outlest_details £¨¡°Ñ²²éÍøµã¡±½øÈë£©
-ÍøµãÑ²²é-Ñ²²é¼ÇÂ¼ checks_record ("¾ßÌåÍøµã¡±½øÈë£©
-ÍøµãÑ²²é-ÈÎÎñÏêÇé checks_record_details £¨"Ñ²²é¼ÇÂ¼"½øÈë£©
-Ñ²²éÈÎÎñÌí¼Ó task_add
-Ñ²²éÈÎÎñÁĞ±í task_lists
-Ñ²²éÈÎÎñÏêÇé task_details
-Í¼Æ¬¡¢ÊÓÆµÏêÇé media_details ("ÍâÇÚÇ©µ½¡±¡¢¡°Ñ²²éÈÎÎñÏêÇé¡±µÄ¸½¼şµã»÷·Å´óä¯ÀÀ£©
-ÏûÏ¢ÌáĞÑ message
-ÏûÏ¢ÏêÇé message_details
-´ı´¦Àí¹¤×÷ todo
-´ı´¦Àí¹¤×÷ÏêÇé£¨Í¬ÏûÏ¢ÏêÇéÒ³message_details£© 
+ï»¿ç™»å½• login
+é¦–é¡µ index
+å®šç‚¹ç­¾åˆ° AptoticAddTimeRecord
+å¤–å‹¤ç­¾åˆ° OutAddTimeRecord
+è€ƒå‹¤å®šç‚¹ CheckPlace_Position	
+å…¬å¸ç½‘ç‚¹ç»´æŠ¤ outlets_ours ï¼ˆè¿™ä¸ªé¡µé¢æ²¡åšï¼Œä¸outlets_checksä¸€æ ·éƒ½æ˜¯æœç´¢å¹¶å±•ç¤ºåˆ—è¡¨çš„ï¼Œç‚¹å‡»åˆ—è¡¨è¿›å…¥ç½‘ç‚¹æäº¤é¡µâ€œoutlets_summitâ€ï¼‰
+ç«äº‰å¯¹æ‰‹ç½‘ç‚¹ç»´æŠ¤ outlets_competitor ï¼ˆåŒä¸Šï¼‰
+ç½‘ç‚¹æäº¤é¡µ outlets_summit
+å‘¨è¾¹ç½‘ç‚¹ outlets_nearby 
+ç½‘ç‚¹å·¡æŸ¥-å¾…å·¡æŸ¥ç½‘ç‚¹ outlets_checks ï¼ˆâ€œç½‘ç‚¹å·¡æŸ¥â€è¿›å…¥ï¼‰
+ç½‘ç‚¹å·¡æŸ¥-å…·ä½“ç½‘ç‚¹ outlest_details ï¼ˆâ€œå·¡æŸ¥ç½‘ç‚¹â€è¿›å…¥ï¼‰
+ç½‘ç‚¹å·¡æŸ¥-å·¡æŸ¥è®°å½• checks_record ("å…·ä½“ç½‘ç‚¹â€è¿›å…¥ï¼‰
+ç½‘ç‚¹å·¡æŸ¥-ä»»åŠ¡è¯¦æƒ… checks_record_details ï¼ˆ"å·¡æŸ¥è®°å½•"è¿›å…¥ï¼‰
+å·¡æŸ¥ä»»åŠ¡æ·»åŠ  task_add
+å·¡æŸ¥ä»»åŠ¡åˆ—è¡¨ task_lists
+å·¡æŸ¥ä»»åŠ¡è¯¦æƒ… task_details
+å›¾ç‰‡ã€è§†é¢‘è¯¦æƒ… media_details ("å¤–å‹¤ç­¾åˆ°â€ã€â€œå·¡æŸ¥ä»»åŠ¡è¯¦æƒ…â€çš„é™„ä»¶ç‚¹å‡»æ”¾å¤§æµè§ˆï¼‰
+æ¶ˆæ¯æé†’ message
+æ¶ˆæ¯è¯¦æƒ… message_details
+å¾…å¤„ç†å·¥ä½œ todo
+å¾…å¤„ç†å·¥ä½œè¯¦æƒ…ï¼ˆåŒæ¶ˆæ¯è¯¦æƒ…é¡µmessage_detailsï¼‰ 
 
 
 1234567890
-ÉÏ´«Í¼Æ¬£¨´øÍ¼Æ¬Ñ¡ÔñÆ÷£© pages/question/question
+ä¸Šä¼ å›¾ç‰‡ï¼ˆå¸¦å›¾ç‰‡é€‰æ‹©å™¨ï¼‰ pages/question/question
 
 
 
 
 appid:wx863a3741b4480255
+
+
+103605 0

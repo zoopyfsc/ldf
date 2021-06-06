@@ -1,2 +1,2 @@
-1£ºÏµÍ³ÅäÖÃÎÄ¼şÎªapp.jsonÎÄ¼ş£¬Ö÷ÒªÅäÖÃÒ»ÏÂÏîÄ¿£ºpages¡¢window¡¢tabBar¡¢networkTimeout¡¢debug£¬¸ÃÎÄ¼şÎªjsonÊı¾İ£¬ÎÄ¼şÄÚ²»ÄÜÌí¼Ó×¢ÊÍĞĞ¡£
-  ×¢Òâ£¬Õâ¸öpages´ÎĞò±È½Ïµ°ÌÛ£¬²»ÒªÂÒµ÷Õû£¬·ñÔòÓĞĞ©JS»áÃ»·¨ÒıÓÃ¶ø³ö´í£¬Ïê¼û£ºÎ¢ĞÅĞ¡³ÌĞò--Do not have xxx handler in current page"  http://www.jianshu.com/p/aaa7c1b43ce4
+ï»¿1ï¼šç³»ç»Ÿé…ç½®æ–‡ä»¶ä¸ºapp.jsonæ–‡ä»¶ï¼Œä¸»è¦é…ç½®ä¸€ä¸‹é¡¹ç›®ï¼špagesã€windowã€tabBarã€networkTimeoutã€debugï¼Œè¯¥æ–‡ä»¶ä¸ºjsonæ•°æ®ï¼Œæ–‡ä»¶å†…ä¸èƒ½æ·»åŠ æ³¨é‡Šè¡Œã€‚
+  æ³¨æ„ï¼Œè¿™ä¸ªpagesæ¬¡åºæ¯”è¾ƒè›‹ç–¼ï¼Œä¸è¦ä¹±è°ƒæ•´ï¼Œå¦åˆ™æœ‰äº›JSä¼šæ²¡æ³•å¼•ç”¨è€Œå‡ºé”™ï¼Œè¯¦è§ï¼šå¾®ä¿¡å°ç¨‹åº--Do not have xxx handler in current page"  http://www.jianshu.com/p/aaa7c1b43ce4

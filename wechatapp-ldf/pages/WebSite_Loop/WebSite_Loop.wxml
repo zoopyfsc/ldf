@@ -30,5 +30,6 @@
         <view><span>联系地址<i>|</i></span> {{item.Address}}</view>
       </view>
 	</view>
+    <view bindtap="loadMore" class="more">加载更多</view>
 	<loading hidden="{{loaddingHidden}}">loading</loading>
 </view>

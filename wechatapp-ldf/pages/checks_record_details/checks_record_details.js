@@ -36,8 +36,8 @@ Page( {
                 var detail = res.data.ReturnData;
                 console.log(detail)
                 var webSite = {
-                    SignInDatetime:new Date(detail.SignInDatetime).Format("yyyy-MM-dd HH:mm"),
-                    SignOutDatetime:new Date(detail.SignOutDatetime).Format("yyyy-MM-dd HH:mm"),
+                    SignInDatetime:new Date(detail.SignInDatetime).Format("yyyy-MM-dd hh:mm"),
+                    SignOutDatetime:new Date(detail.SignOutDatetime).Format("yyyy-MM-dd hh:mm"),
                     WebSiteName:detail.WebSiteName,
                     Createby:detail.Createby,
                     Createon:new Date(detail.Createon).Format("yyyy-MM-dd")

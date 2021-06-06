@@ -2,70 +2,76 @@
 var app = getApp()
 Page({
     data: {
-        loginHidden:true,
+        loginHidden: true,
         array: ["请选择用户账号类型", "销售门户账号", "综合门户账号"],
         objectArray: [{
-                id: 0,
-                name: '请选择用户账号类型'
-            },
-            {
-                id: 1,
-                name: '销售门户账号'
-            },
-            {
-                id: 2,
-                name: '综合门户账号'
-            }
+            id: 0,
+            name: '请选择用户账号类型'
+        },
+        {
+            id: 1,
+            name: '销售门户账号'
+        }, 
+        { 
+            id: 2,
+            name: '综合门户账号'
+        }
         ],
         index: 0,
     },
-    bindPickerChange: function(e) {
+    bindPickerChange: function (e) {
         this.setData({
             index: e.detail.value
         })
     },
-    bindUserChange: function(e) {
+    bindUserChange: function (e) {
         this.setData({
             username: e.detail.value
         })
     },
-    bindPwdChange: function(e) {
+    bindPwdChange: function (e) {
         this.setData({
             pwd: e.detail.value
         })
     },
 
     //事件处理函数 点击按钮
-    applySubmit: function() {
+    applySubmit: function () {
         var that = this;
-        this.setData({loginHidden:!this.data.loginHidden})
+        this.setData({ loginHidden: false })
         var name = this.data.username;
         var pwd = this.data.pwd;
         var ind = this.data.index;
-
-        //if(name && pwd && ind){
-        wx.login({
-            success: function(res) {
-                wx.getUserInfo({
-                    success: function(res2) {
-                        bindUser(ind,name, pwd, res.code, res2.iv, res2.encryptedData);
-                    }
-                });
-            }
-        });
+        if (name && pwd && ind) {
+            wx.login({
+                success: function (res) {
+                    wx.getUserInfo({
+                        success: function (res2) {
+                            bindUser(ind, name, pwd, res.code, res2.iv, res2.encryptedData, that);
+                        }
+                    });
+                }
+            });
+        } else {
+            that.setData({ loginHidden: true })
+            wx.showModal({
+                title: '提示',
+                content: '请输入相关内容，以绑定后用户。'
+            })
+        }
     },
-    onLoad:function(){
-      var that = this;
-      this.setData({loginHidden:!this.data.loginHidden})
+    onLoad: function () {
+        var that = this;
+        this.setData({ loginHidden: false })
         var name = this.data.username;
         var pwd = this.data.pwd;
         var ind = this.data.index;
         wx.login({
-            success: function(res) {
+            success: function (res) {
                 wx.getUserInfo({
-                    success: function(res2) {
-                          that.setData({userInfo:res2.userInfo}); 
-                          checkBind(ind,name, pwd, res.code, res2.iv, res2.encryptedData,that); 
+                    success: function (res2) {
+                        that.setData({ userInfo: res2.userInfo });
+                        checkBind(ind, name, pwd, res.code, res2.iv, res2.encryptedData, that);
                     }
                 });
             }
@@ -74,9 +80,8 @@ Page({
 })
 
 //检查绑定
-function checkBind(index,name, pwd, code, iv, encryptedData,that) {
-    console.log(code)
-    var url = getApp().globalData.mainUrl+"WX_MiniApps_User_CheckISWxBinded.ashx";
+function checkBind(index, name, pwd, code, iv, encryptedData, that) {
+    var url = getApp().globalData.mainUrl + "WX_MiniApps_User_CheckISWxBinded.ashx";
     wx.request({
         url: url,
         data: {
@@ -84,24 +89,28 @@ function checkBind(index,name, pwd, code, iv, encryptedData,that) {
             Iv: iv,
             EncryptedData: encryptedData
         },
-        success: function(res3) {
-            that.setData({loginHidden:!that.data.loginHidden})
+        success: function (res3) {
+            that.setData({ loginHidden: true })
             console.log(res3.data)
             if (res3.data.ReturnData == 0) {
-                bindUserBefore(index,name, pwd);
+                //bindUserBefore(index,name, pwd,that);
+                wx.showModal({
+                    title: '提示',
+                    content: '请输入用户名密码绑定后登录'
+                });
             } else {
-               getToken(that);
+                getToken(that);
             }
         }
     });
 }
 
-function bindUserBefore(index,name, pwd){
+function bindUserBefore(index, name, pwd, that) {
     wx.login({
-        success: function(res) {
+        success: function (res) {
             wx.getUserInfo({
-                success: function(res2) {
-                    bindUser(index,name, pwd, res.code, res2.iv, res2.encryptedData);
+                success: function (res2) {
+                    bindUser(index, name, pwd, res.code, res2.iv, res2.encryptedData, that);
                 }
             });
         }
@@ -109,9 +118,8 @@ function bindUserBefore(index,name, pwd){
 }
 
 //绑定用户
-function bindUser(index,name, pwd, code, iv, encryptedData) {
-    console.log(code)
-    var url = getApp().globalData.mainUrl+"WX_MiniApps_User_BindAccout.ashx";
+function bindUser(index, name, pwd, code, iv, encryptedData, that) {
+    var url = getApp().globalData.mainUrl + "WX_MiniApps_User_BindAccout.ashx";
     wx.request({
         url: url,
         data: {
@@ -122,10 +130,16 @@ function bindUser(index,name, pwd, code, iv, encryptedData) {
             Iv: iv,
             EncryptedData: encryptedData
         },
-        success: function(res3) {
+        success: function (res3) {
+            that.setData({ loginHidden: true })
             console.log(res3.data)
             if (res3.data.Result == 1) {
                 getToken(that);
+            } else {
+                wx.showModal({
+                    title: '提示',
+                    content: res3.data.ReturnMsg
+                })
             }
         }
     });
@@ -134,9 +148,9 @@ function bindUser(index,name, pwd, code, iv, encryptedData) {
 //获取openid 和 token
 function getToken(that) {
     wx.login({
-        success: function(res) {
+        success: function (res) {
             wx.getUserInfo({
-                success: function(res2) {
+                success: function (res2) {
                     var url = "https://miniapp1.nedfon.info/SalesManagement/WX_MiniApps_User_GetToken.ashx";
                     wx.request({
                         url: url,
@@ -145,18 +159,18 @@ function getToken(that) {
                             Iv: res2.iv,
                             EncryptedData: res2.encryptedData
                         },
-                        success: function(res) {
-                            that.setData({loginHidden:!that.data.loginHidden})
+                        success: function (res) {
+                            that.setData({ loginHidden: true })
                             console.log(res.data);
                             var OpenID = res.data.ReturnData.OpenID;
                             var Token = res.data.ReturnData.Token;
                             if (res.data.Result == 1) {
-                                wx.setStorageSync("OpenID",OpenID);
-                                wx.setStorageSync("Token",Token);
+                                wx.setStorageSync("OpenID", OpenID);
+                                wx.setStorageSync("Token", Token);
 
                                 //跳转页面到index
                                 wx.redirectTo({
-                                    url:'../index/index'
+                                    url: '../index/index'
                                 });
                             }
                         }

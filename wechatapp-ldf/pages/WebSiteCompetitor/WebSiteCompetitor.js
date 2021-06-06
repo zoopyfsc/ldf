@@ -8,7 +8,11 @@ Page({
       district: ['-四级地区-'],
       provinceIndex: 0,
       cityIndex: 0,
-      districtIndex: 0
+      districtIndex: 0,
+      IsNeedPage: 1,
+      PageSize: 10,
+      CurrentPageNum: 1,
+      list:[]
   },
   onLoad: function () {
     var that = this;
@@ -33,15 +37,19 @@ Page({
       wx.navigateTo({
         url:'../competitor_submit/competitor_submit?websiteid='+websiteid
       })
-  } 
+  } ,
+  loadMore:function(){
+    this.setData({CurrentPageNum:this.data.CurrentPageNum+1});
+    getWebSite(this);
+  }
 });
 
 function getWebSite(that){
     var OpenID = wx.getStorageSync("OpenID");
     var Token = wx.getStorageSync("Token");
-    var url = getApp().globalData.mainUrl + "WX_MiniApps_WebSite_GetCompetitorWebSiteList.ashx";
+    var url = getApp().globalData.mainUrl + "WX_MiniApps_WebSite_GetCompetitorWebSiteList.ashx?1=1";
     if(that.data.provinceIndex!=0){
-      url = url + "?TerritoryCode2="+that.data.province_[that.data.provinceIndex].code;
+      url = url + "&TerritoryCode2="+that.data.province_[that.data.provinceIndex].code;
     }
     if(that.data.cityIndex!=0){
       url = url + "&TerritoryCode3="+that.data.city_[that.data.cityIndex].code;
@@ -50,20 +58,13 @@ function getWebSite(that){
       url = url + "&TerritoryCode4="+that.data.district_[that.data.districtIndex].code;
     }
     if(that.data.market){
-      if(url.indexOf("?")){
         url = url + "&MarketName="+that.data.market;
-      }else{
-        url = url + "?MarketName="+that.data.market;
-      }
     }
     if(that.data.webSite){
-      if(url.indexOf("?")){
         url = url + "&WebSiteName="+that.data.webSite;
-      }else{
-        url = url + "?WebSiteName="+that.data.webSite;
-      }
     }
-    console.log(url)
+    //分页参数
+    url = url + "&IsNeedPage=1&PageSize=10&CurrentPageNum="+that.data.CurrentPageNum;
 
     wx.request({
       url: url,
@@ -83,7 +84,7 @@ function getWebSite(that){
               WebSiteID:obj.WebSiteID
             }
           });
-          that.setData({list:list})
+        that.setData({ list: that.data.list.concat(list) });
       }
     });
 }

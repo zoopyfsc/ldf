@@ -8,7 +8,7 @@ Page({
 
   task_lists: function () {
     wx.redirectTo({
-      url: '../WebSiteLoop_Task/TaskList'
+      url: '../TaskList/TaskList'
     })
   },
 
@@ -42,7 +42,8 @@ function getTasks(that){
               TaskExecutorAccoutName:obj.TaskExecutorAccoutName,
               TaskTitle:obj.TaskTitle,
               TaskID:obj.TaskID,
-              ExecutorStatus:obj.TaskExecutorStatus
+              ExecutorStatus:obj.TaskExecutorStatus,
+              Num:obj.TaskDetailBOList.length
             }
           });
           that.setData({list:list})

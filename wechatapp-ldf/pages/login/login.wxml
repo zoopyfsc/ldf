@@ -40,14 +40,11 @@
 			</view>
 		</view>
 		
-
-
-
 	</view>
 	<view class="btn-submit">
 		<button class="btn-block btn-orange" bindtap="applySubmit">绑定并登录</button>
 	</view>
-	<loading hidden="{{loginHidden}}">登录中</loading>
-  <view class="usermotto">无平台账号请联系管理员</view>
+	<loading hidden="{{loginHidden}}">loading</loading>
+  <view class="usermotto">无平台账号请联系管理员,已绑定用户，系统将自动登录。</view>
 
 </view>

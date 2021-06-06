@@ -6,32 +6,9 @@ Page({
     date1:new Date().Format("yyyy-MM-dd")
   },
   onLoad: function () {
-    var that = this;
-    var latitude;
-    var longitude;
-    var place;
-    //获取地理位置
-    wx.getLocation({
-        success:function (res) {  
-          latitude = res.latitude;
-          longitude = res.longitude;
-          that.setData({latitude:latitude});
-          that.setData({longitude:longitude});
-          var key = 'RFHBZ-QOSRI-NIDGO-5ZWX4-5HSS7-YDFMT';
-          wx.request({
-            url:'http://apis.map.qq.com/ws/geocoder/v1/',
-            data:{
-               location:latitude+","+longitude,
-               key:key
-            },
-            success:function(res) {
-              place = res.data.result.address;
-              that.setData({address:place+'('+latitude+","+longitude+')'});
-              that.setData({place:place});
-            }
-          })
-        }
-    });
+    var that = this; 
+    util.getLocation(that);
+    
     //获取常用地点
     var url = getApp().globalData.mainUrl + "WX_MiniApps_HR_GetCheckPlaceListByMember.ashx";
     var OpenID = wx.getStorageSync("OpenID");
@@ -84,7 +61,7 @@ Page({
             CheckPlaceID:checkPlaceID,
             GPS_X_Tencent:this.data.latitude,
             GPS_Y_Tencent:this.data.longitude,
-            GPSAddress_Tencent:this.data.place,
+            GPSAddress_Tencent:this.data.place.place,
             RecordsType:'1'
         },
         success: function(res) {

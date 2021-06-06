@@ -1,25 +1,26 @@
 {
     "pages": [
-        "pages/login/login",
-        "pages/index/index",
-        "pages/WebSiteListNearby/WebSiteListNearby",
+        "pages/login/login", 
+        "pages/index/index", 
+        "pages/WebSiteListNearby/WebSiteListNearby", 
 
-
-        "pages/outlets_summit/outlets_summit",
         "pages/media_details/media_details",
         "pages/AptoticAddTimeRecord/AptoticAddTimeRecord",
-        "pages/OutAddTimeRecord/OutAddTimeRecord",
-        "pages/CheckPlace_Positon/CheckPlace_Positon",
-        "pages/WebSiteList/WebSiteList",
-        "pages/WebSiteCompetitor/WebSiteCompetitor",
-        "pages/WebSite_Loop/WebSite_Loop",
+        "pages/OutAddTimeRecord/OutAddTimeRecord", 
+        "pages/CheckPlace_Positon/CheckPlace_Positon", 
 
+        "pages/WebSiteList/WebSiteList", 
+        "pages/outlets_summit/outlets_summit", 
+
+        "pages/WebSiteCompetitor/WebSiteCompetitor", 
+        "pages/competitor_submit/competitor_submit",
+
+        "pages/WebSite_Loop/WebSite_Loop", 
+        "pages/outlest_details/outlest_details",
 
         "pages/WebSiteLoop_Task/WebSiteLoop_Task",
-        "pages/outlest_details/outlest_details",
         "pages/checks_record/checks_record",
         "pages/checks_record_details/checks_record_details",
-
 
         "pages/TaskList/TaskList",
         "pages/task_add/task_add",
@@ -28,7 +29,6 @@
         "pages/OA_Work/OA_Work",
         "pages/OA_RemindMsg/OA_RemindMsg",
         "pages/message_details/message_details",
-        "pages/competitor_submit/competitor_submit",
         "pages/CheckPlace_detail/CheckPlace_detail",
         "pages/select_webSite/select_webSite",
         "pages/select_webSite_1/select_webSite"

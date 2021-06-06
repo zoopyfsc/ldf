@@ -36,4 +36,5 @@
 
 
 
+    <view bindtap="loadMore" class="more">加载更多</view>
 </view>

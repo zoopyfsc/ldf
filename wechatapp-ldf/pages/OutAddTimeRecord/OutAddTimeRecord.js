@@ -16,31 +16,8 @@ Page({
        that.setData({websiteid:options.websiteid})
     }
 
-    var latitude;
-    var longitude;
-    var place;
-    //获取地理位置
-    wx.getLocation({
-        success:function (res) {  
-          latitude = res.latitude;
-          longitude = res.longitude;
-          that.setData({latitude:latitude});
-          that.setData({longitude:longitude});
-          var key = 'RFHBZ-QOSRI-NIDGO-5ZWX4-5HSS7-YDFMT';
-          wx.request({
-            url:'http://apis.map.qq.com/ws/geocoder/v1/',
-            data:{
-               location:latitude+","+longitude,
-               key:key
-            },
-            success:function(res) {
-              place = res.data.result.address;
-              that.setData({address:place+'('+latitude+","+longitude+')'});
-              that.setData({place:place});
-            }
-          })
-        }
-    });
+    
+    util.getLocation(that);
     
     getAptoticLog(that);
   },
@@ -90,7 +67,7 @@ Page({
         OpenID:OpenID,
         GPS_X_Tencent:this.data.latitude,
         GPS_Y_Tencent:this.data.longitude,
-        GPSAddress_Tencent:this.data.place,
+        GPSAddress_Tencent:this.data.place.place,
         RecordsType:'2',
         WebSiteID:this.data.websiteid,
         OutWorkReason:this.data.reason
@@ -140,10 +117,11 @@ function getAptoticLog(that){
               list[index] = {
                 code:obj.RecordsTypeShow,
                 text:obj.GPSAddress_Tencent,
-                type: new Date((obj.Signtime).replace("T"," ")).Format("hh:mm") 
+                type: obj.Signtime.substr(11,5) 
               }
-          });
+          }); 
           that.setData({listData:list})
+          console.log(list)
         }
     });
 }

@@ -1,81 +1,98 @@
-<!--logs.wxml-->
+<!-- logs.wxml -->
 <view class="container">
-
-	<view class="container-body page-content">
-         <!--网点详情-->
-      <view class="wangdian">
-        <view><span>网点名称<i>|</i></span> {{webSite.WebSiteName}}</view>
-        <view><span>联系地址<i>|</i></span> {{webSite.Address}}</view>
-         <view><span style="margin-left:14px">联系人<i>|</i></span> {{webSite.LinkMan}}</view>
-         <view><span style="margin-left:27px">电话<i>|</i></span> {{webSite.LinkPhone}}</view>
-      </view>
-
-           <!--签到签退按钮-->
+  <view class="container-body page-content">
+    <!-- 网点详情 -->
+    <view class="wangdian">
       <view>
-        <button class="btn-orange" style="width:40%;float:left; margin-left:5%;" bindtap="signIn" disabled="{{submited}}">签到</button>              
-         <button class="btn-orange" style="width:40%;margin-top:5px; " bindtap="signOut" disabled="{{submited}}">签退</button>
-      </view>
+        <span>
+          网点名称<i>
+          |</i>
+        </span>
+        {{webSite.WebSiteName}}</view>
+        <view>
+          <span>
+            联系地址<i>
+            |</i>
+          </span>
+          {{webSite.Address}}</view>
+          <view>
+            <span style="margin-left:14px">
+              联系人<i>
+              |</i>
+            </span>
+            {{webSite.LinkMan}}</view>
+            <view>
+              <span style="margin-left:27px">
+                电话<i>
+                |</i>
+              </span>
+              {{webSite.LinkPhone}}</view>
+            </view>
+            <!-- 签到签退按钮 -->
+            <view>
+              <button class="btn-orange" style="width:40%;float:left; margin-left:5%;" bindtap="signIn" disabled="{{submited}}">签到</button>
+              <button class="btn-orange" style="width:40%;margin-top:5px; " bindtap="signOut" disabled="{{submited}}">签退</button>
+            </view>
+            <!-- 确认图片 -->
+            <view class="photo">
+              <!-- 上传附件 -->
+              <view class="upload_photo_title">上传图片(必填)</view>
+              <view class="upload_photo">
+                <view wx:for="{{imagesUrl}}" wx:key="{{item.path}}">
+                  <image class="upload_photo_thumb" src="{{item.path}}" bindtap="openDeleteMenu"
+                    data-type="image" data-path="{{item.path}}"></image>
+                </view>
+                <view bindtap="bindChooseImage">
+                  <image class="upload_photo_add" src="../../images/add.png"></image>
+                </view>
+              </view>
+              <view style="clear:both; "></view>
+              <button class="btn-orange" style="width:50%;margin-top:5px; " bindtap="uploadPhoto" disabled="{{submited}}">*确认图片</button>
+            </view>
+            <!-- 确认视频 -->
+            <view class="video">
+              <!-- 上传视频 -->
+              <view class="upload_photo_title">上传视频</view>
+              <view class="upload_photo">
+                <!-- 已上传的视频 -->
+                <view wx:for="{{videosUrl}}" wx:key="{{item.path}}">
+                  <video class="upload_video_thumb " src="{{item.path}}" bindtap="openDeleteMenu"
+                    data-type="video" data-path="{{item.path}}"></video>
+                </view>
+                <!-- 上传视频 -->
+                <view bindtap="bindChooseVedio">
+                  <image class="upload_photo_add" src="../../images/add.png"></image>
+                </view>
+              </view>
+              <view style="clear:both; "></view>
+              <button class="btn-orange" style="width:50%;margin-top:5px; " bindtap="uploadVideo" disabled="{{submited}}">确认视频</button>
+            </view>
+            <!-- 网点详情 -->
+            <view class="wangdian">
+              <view>
+                <span>
+                  当前位置<i>
+                  |</i>
+                </span>
+                <small style="font-size:12px; float:right"></small>
+                {{place.place}}</view>
+                <view class="mainView">
+                  <map id="map" bindmarkertap="markertap" bindregionchange="regionchange" latitude="{{place.latitude}}"
+                       longitude="{{place.longitude}}" show-location style="width:100%; height:200px;"></map>
+                </view>
+              </view>
+              <!-- 按钮底部固定 -->
+              <view class="btn-bottom-fixed btn-submit">
+                <button class="btn-block btn-orange" bindtap="viewPatrolLog">本网点巡查记录</button>
+              </view>
+            </view>
+            <loading hidden="{{loaddingHidden}}">loading</loading>
 
-           <!--确认图片-->
-      <view  class="photo">
+            <action-sheet hidden="{{actionSheetHidden}}">
+              <block wx:for-items="{{actionSheetItems}}">
+                <action-sheet-item bindtap="bind{{item.bindtap}}">{{item.txt}}</action-sheet-item>
+              </block>
+              <action-sheet-cancel class="cancel" bindtap="closeDeleteMenu">取消</action-sheet-cancel>
+            </action-sheet>
 
-  <!--上传附件-->  
-  	
-  <view class="upload_photo_title" >上传图片(必填)</view>
-	  <view class="upload_photo" >
-      <view wx:for="{{imagesUrl}}" wx:key="{{item.path}}"> 
-        <image class="upload_photo_thumb" src="{{item.path}}"></image>
-      </view>
-      <view bindtap="bindChooseImage">
-       <image class="upload_photo_add" src="../../images/add.png"></image></view>
-    </view>
-		
-    <view style="clear:both; "></view>
-
-
-            <button class="btn-orange" style="width:50%;margin-top:5px; " bindtap="uploadPhoto" disabled="{{submited}}">*确认图片</button>
-      </view>
-
-           <!--确认视频-->
-      <view  class="video">
-
-        <!--上传视频-->  
-  	
-  <view class="upload_photo_title" >上传视频</view>
-	  <view class="upload_photo" >
-    <!--已上传的视频-->
-     <view wx:for="{{videosUrl}}" wx:key="{{item.path}}"> 
-      <video class="upload_video_thumb " src="{{item.path}}"></video>
-    </view>
-    <!--上传视频-->
-      <view bindtap="bindChooseVedio">
-       <image class="upload_photo_add" src="../../images/add.png"></image></view>
-    </view>
-		
-    <view style="clear:both; "></view>
-
-            <button class="btn-orange" style="width:50%;margin-top:5px; " bindtap="uploadVideo" disabled="{{submited}}">确认视频</button>
-      </view>
-
-         <!--网点详情-->
-      <view class="wangdian">
-        <view><span>当前位置<i>|</i></span><small style="font-size:12px; float:right"></small> {{place.place}}</view>
-         <view class="mainView">
-            <map id="map" bindmarkertap="markertap"
-             bindregionchange="regionchange" latitude="{{place.latitude}}" longitude="{{place.longitude}}"
-            show-location style="width:100%; height:200px;"></map>
-           </view> 
-      </view>
-
-       <!--按钮底部固定-->
-	<view class="btn-bottom-fixed btn-submit">
-		<button class="btn-block btn-orange" bindtap="viewPatrolLog">本网点巡查记录</button>
-	</view>
-
-
-	</view>
-
-
-	<loading hidden="{{loaddingHidden}}">loading</loading>
-
-</view>
+          </view>

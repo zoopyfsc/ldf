@@ -11,6 +11,12 @@
 			<view class="group-body">
 				<view class="input-list">
 					<view class="input-item">
+						<text class="input-item-label">销售人员</text>
+						<picker bindchange="bindPickerChange" value="{{index}}" range="{{list1}}">
+							<view class="picker">{{list1[index]}}</view>
+						</picker>
+					</view>
+					<view class="input-item">
 						<text class="input-item-label">巡查网点</text>
 						<view class="input-item-content">
 							<view bindtap="selectWebSite">{{websitenum}}</view>
@@ -20,12 +26,6 @@
 						<text class="input-item-label">执行日期</text>
 						<picker mode="date" value="{{date}}" start="2017-01-01" end="2030-12-31" bindchange="bindDateChange">
 							<view class="picker">{{date}}</view>
-						</picker>
-					</view>
-					<view class="input-item">
-						<text class="input-item-label">销售人员</text>
-						<picker bindchange="bindPickerChange" value="{{index}}" range="{{list1}}">
-							<view class="picker">{{list1[index]}}</view>
 						</picker>
 					</view>
 					<view class="input-item">

@@ -5,7 +5,7 @@ Page({
   data: {
     loaddingHidden:true,
       mapHidden:false,
-      info:'类型：所有网点  网点：不限  销售额：不限  距离：5KM'
+      info:'类型：所有  网点：不限  销售额：不限  距离：5KM'
   },
   gotoHere_:function(e){
     var ds = e.currentTarget.dataset;
@@ -66,18 +66,18 @@ Page({
     this.setData({
       filterdata: {
         "sort": [
-          {"id": 0, "title":"网点不限"},
-          {"id": 1, "title": "店招网点"},
-          {"id": 2, "title": "展柜网点"},
-          {"id": 3, "title": "I类网点"},
+          {"id": 0, "title":"不限"},
+          {"id": 1, "title": "店招"},
+          {"id": 2, "title": "展柜"},
+          {"id": 3, "title": "I类"},
         ],
         "type": [
-          {"id": 0,"title": "全部网点"},
-          {"id": 1,"title": "公司网点"},
-          {"id": 2,"title": "对手网点"},
+          {"id": 0,"title": "全部"},
+          {"id": 1,"title": "公司"},
+          {"id": 2,"title": "对手"},
         ],
         "sale": [
-          {"id": 0,"title": "销售额不限"},
+          {"id": 0,"title": "不限"},
           {"id": 1,"title": "0-1万"},
           {"id": 2,"title": "1-5万"},
           {"id": 3,"title": "5万+"},
@@ -136,7 +136,7 @@ function getWebSites(that){
   }
   if(that.data.lenid!=null){
       url = url + "&Range="+that.data.lenid;
-      info = info +"  距离:"+ that.data.filterdata.len[that.data.lenid].title;
+      info = info +"  距离:"+ that.data.filterdata.len[that.data.lenid-1].title;
   }
   that.setData({info:info})
   console.log(info)

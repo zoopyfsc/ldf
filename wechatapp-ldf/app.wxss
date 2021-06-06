@@ -473,3 +473,5 @@ radio-group label.checked:before{
 /*附件详情页*/
 .media_warpper{ background: #666; width: 100%; height: 100%;}
 .media_warpper img{ margin: 2px auto; text-align: center; width:90%; height:auto;}
+
+.more{text-align:right;padding-right:50px; padding-bottom: 10px;}

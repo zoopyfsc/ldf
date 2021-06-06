@@ -7,13 +7,13 @@ Page({
     websitenum: '请选择销售人员的网点'
   },
   task_add: function () {
-    wx.navigateTo({
-      url: '../task_add/task_add'
+    wx.redirectTo({
+      url: '../WebSiteLoop_Task/WebSiteLoop_Task'
     })
   },
 
   task_lists: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../TaskList/TaskList'
     })
   },

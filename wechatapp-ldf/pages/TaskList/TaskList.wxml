@@ -20,7 +20,7 @@
 	</view>
   <view class="task-list-brife">
     <view class="task-list-brife-left">{{item.TaskExecutorDate}}<small>执行日期</small></view>
-    <view class="task-list-brife-center">{{item.WebSiteName}}<small>巡查网点</small></view>
+    <view class="task-list-brife-center">{{item.Num}}<small>巡查网点</small></view>
     <view class="task-list-brife-right">{{item.TaskExecutorAccoutName}}<small>指派人员</small></view>
   </view>
 </view>
